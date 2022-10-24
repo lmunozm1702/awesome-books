@@ -1,7 +1,7 @@
-const books = document.querySelector(".books-content");
+const books = document.querySelector('.books-content');
 
 let awesomeBooks = [];
-let awesomeBooks2 = JSON.parse(localStorage.getItem("awesomeBooks")) || [];
+const awesomeBooks2 = JSON.parse(localStorage.getItem('awesomeBooks')) || [];
 let id = 0;
 
 if (awesomeBooks.length > 0) {
@@ -9,48 +9,42 @@ if (awesomeBooks.length > 0) {
 }
 
 function updateLocalStorage() {
-  localStorage.setItem("awesomeBooks", JSON.stringify(awesomeBooks));
-}
-
-function renderBooks() {
-  awesomeBooks2.forEach((book) => {
-    addBook(book.title, book.author);
-  });
+  localStorage.setItem('awesomeBooks', JSON.stringify(awesomeBooks));
 }
 
 function removeBook(id) {
   console.log(id);
-  let [a, b] = id.split("_");
+  const [a, b] = id.split('_');
   console.log(b);
-  awesomeBooks = awesomeBooks.filter((book) => book.id != b);
-  //console.log(`#Book${id} `);
+  awesomeBooks = awesomeBooks.filter((book) => book.id !== b);
   document.querySelector(`#Book${b}`).remove();
   updateLocalStorage();
+  return a;
 }
 
 function addBook(title, author) {
-  let newBook = new Object();
+  const newBook = {};
   id += 1;
   newBook.id = id;
   newBook.title = title;
   newBook.author = author;
   awesomeBooks.push(newBook);
 
-  let singleBook = document.createElement("div");
-  singleBook.classList.add("single-book");
+  const singleBook = document.createElement('div');
+  singleBook.classList.add('single-book');
   singleBook.id = `Book${id}`;
   books.appendChild(singleBook);
 
-  let titleDiv = document.createElement("div");
+  const titleDiv = document.createElement('div');
   titleDiv.textContent = title;
   singleBook.appendChild(titleDiv);
 
-  let authorDiv = document.createElement("div");
+  const authorDiv = document.createElement('div');
   authorDiv.textContent = author;
   singleBook.appendChild(authorDiv);
 
-  let buttonDiv = document.createElement("button");
-  buttonDiv.textContent = "See Project";
+  const buttonDiv = document.createElement('button');
+  buttonDiv.textContent = 'See Project';
   buttonDiv.id = `button_${id}`;
   buttonDiv.onclick = function () {
     removeBook(buttonDiv.id);
@@ -59,12 +53,17 @@ function addBook(title, author) {
   updateLocalStorage();
 }
 
-const addButton = document.querySelector("#add-button");
-addButton.addEventListener("click", () => {
+const addButton = document.querySelector('#add-button');
+addButton.addEventListener('click', () => {
   addBook(
-    document.querySelector("#title").value,
-    document.querySelector("#author").value
+    document.querySelector('#title').value,
+    document.querySelector('#author').value,
   );
 });
 
+function renderBooks() {
+  awesomeBooks2.forEach((book) => {
+    addBook(book.title, book.author);
+  });
+}
 renderBooks();
