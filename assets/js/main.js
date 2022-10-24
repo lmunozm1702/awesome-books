@@ -14,7 +14,7 @@ function updateLocalStorage() {
 
 function removeBook(id) {
   const [a, b] = id.split('_');
-  awesomeBooks = awesomeBooks.filter((book) => book.id != b);
+  awesomeBooks = awesomeBooks.filter((book) => book.id.toString() !== b.toString());
   document.querySelector(`#Book${b}`).remove();
   updateLocalStorage();
   return a;
