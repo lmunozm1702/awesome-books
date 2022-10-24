@@ -1,7 +1,7 @@
 const books = document.querySelector(".books-content");
 
 let awesomeBooks = [];
-let awesomeBooks2 = JSON.parse(localStorage.getItem("awesomeBooks"))||[];
+let awesomeBooks2 = JSON.parse(localStorage.getItem("awesomeBooks")) || [];
 let id = 0;
 
 if (awesomeBooks.length > 0) {
@@ -18,7 +18,15 @@ function renderBooks() {
   });
 }
 
-renderBooks();
+function removeBook(id) {
+  console.log(id);
+  let [a, b] = id.split("_");
+  console.log(b);
+  awesomeBooks = awesomeBooks.filter((book) => book.id != b);
+  //console.log(`#Book${id} `);
+  document.querySelector(`#Book${b}`).remove();
+  updateLocalStorage();
+}
 
 function addBook(title, author) {
   let newBook = new Object();
@@ -59,12 +67,4 @@ addButton.addEventListener("click", () => {
   );
 });
 
-function removeBook(id) {
-  console.log(id);
-  let [a, b] = id.split("_");
-  console.log(b);
-  awesomeBooks = awesomeBooks.filter((book) => book.id != b);
-  //console.log(`#Book${id} `);
-  document.querySelector(`#Book${b}`).remove();
-  updateLocalStorage();
-}
+renderBooks();
