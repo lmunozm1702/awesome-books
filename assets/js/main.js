@@ -13,10 +13,8 @@ function updateLocalStorage() {
 }
 
 function removeBook(id) {
-  console.log(id);
   const [a, b] = id.split('_');
-  console.log(b);
-  awesomeBooks = awesomeBooks.filter((book) => book.id !== b);
+  awesomeBooks = awesomeBooks.filter((book) => book.id != b);
   document.querySelector(`#Book${b}`).remove();
   updateLocalStorage();
   return a;
@@ -44,7 +42,7 @@ function addBook(title, author) {
   singleBook.appendChild(authorDiv);
 
   const buttonDiv = document.createElement('button');
-  buttonDiv.textContent = 'See Project';
+  buttonDiv.textContent = 'Remove';
   buttonDiv.id = `button_${id}`;
   buttonDiv.onclick = function () {
     removeBook(buttonDiv.id);
