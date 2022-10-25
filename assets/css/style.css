@@ -2,12 +2,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
 }
 
-.app-container{
+.app-container {
   border: 2px solid black;
   width: 50%;
   padding: 10px;
@@ -15,29 +15,29 @@ body {
   text-align: center;
 }
 
-.books-content{
+.books-content {
   border: 2px solid black;
   margin-top: 10px;
 }
 
-.single-book{
+.single-book {
   display: flex;
   justify-content: space-between;
   padding: 5px 10px;
 }
 
-.single-book:nth-child(2n+1){
-background-color: gray;
+.single-book:nth-child(2n + 1) {
+  background-color: gray;
 }
 
-.ligne{
+.ligne {
   width: 100px;
   height: 3px;
   background-color: gray;
   margin: 20px auto;
 }
 
-form{
+form {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -45,10 +45,8 @@ form{
   margin: 0 auto;
 }
 
-#add-button{
+#add-button {
   width: fit-content;
   align-self: flex-end;
   padding: 4px;
 }
-
-

@@ -3,20 +3,19 @@ const books = document.querySelector('.books-content');
 function deleteBook(id) {
   const [a, b] = id.split('_');
   myLibrary.removeBook(b);
-  console.log(myLibrary);
   return a;
 }
 class AwesomeBooks {
   constructor(
     awesomeBooks = [],
-    awesoneBooks2 = JSON.parse(localStorage.getItem("awesomeBooks")) || []
+    awesoneBooks2 = JSON.parse(localStorage.getItem('awesomeBooks')) || []
   ) {
     this.awesomeBooks = awesomeBooks;
-    this.awesomeBooks2 = awesoneBooks2
+    this.awesomeBooks2 = awesoneBooks2;
     this.id = 0;
   }
 
-  renderBooks(){
+  renderBooks() {
     this.awesomeBooks2.forEach((book) => {
       this.addBook(book);
     });
@@ -28,33 +27,27 @@ class AwesomeBooks {
 
     this.awesomeBooks.push(Book);
 
-    const singleBook = document.createElement("div");
-    singleBook.classList.add("single-book");
+    const singleBook = document.createElement('div');
+    singleBook.classList.add('single-book');
     singleBook.id = `Book${Book.id}`;
     books.appendChild(singleBook);
 
-    const titleDiv = document.createElement("div");
-    titleDiv.textContent = `"${Book.title}" by  ${Book.author}`;
+    const titleDiv = document.createElement('div');
+    titleDiv.textContent = `'${Book.title}' by  ${Book.author}`;
     singleBook.appendChild(titleDiv);
 
-    // const authorDiv = document.createElement("div");
-    // authorDiv.textContent = Book.author;
-    // singleBook.appendChild(authorDiv);
-
-
-    const buttonDiv = document.createElement("button");
-    buttonDiv.textContent = "Remove";
+    const buttonDiv = document.createElement('button');
+    buttonDiv.textContent = 'Remove';
     buttonDiv.id = `button_${Book.id}`;
     buttonDiv.onclick = function () {
       deleteBook(buttonDiv.id);
     };
     singleBook.appendChild(buttonDiv);
-
     this.addToLocalStorage();
   }
 
   addToLocalStorage() {
-    localStorage.setItem("awesomeBooks", JSON.stringify(this.awesomeBooks));
+    localStorage.setItem('awesomeBooks', JSON.stringify(this.awesomeBooks));
   }
 
   removeBook(id) {
@@ -74,15 +67,13 @@ class Book {
 }
 
 const myLibrary = new AwesomeBooks();
-
 myLibrary.renderBooks();
-
 
 const addButton = document.querySelector('#add-button');
 addButton.addEventListener('click', () => {
   const newBook = new Book(document.querySelector('#title').value, document.querySelector('#author').value);
   myLibrary.addBook(newBook);
-  document.querySelector("#title").value = '';
-  document.querySelector("#author").value = '';
+  document.querySelector('#title').value = '';
+  document.querySelector('#author').value = '';
 });
 
