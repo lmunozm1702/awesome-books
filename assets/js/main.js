@@ -1,67 +1,67 @@
+import Book from './books.js';
+
 const books = document.querySelector('.books-content');
+class AwesomeBooks {
+  constructor(
+    awesomeBooks = [],
+    awesoneBooks2 = JSON.parse(localStorage.getItem('awesomeBooks')) || [],
+  ) {
+    this.awesomeBooks = awesomeBooks;
+    this.awesomeBooks2 = awesoneBooks2;
+    this.id = 0;
+  }
 
-let awesomeBooks = [];
-const awesomeBooks2 = JSON.parse(localStorage.getItem('awesomeBooks')) || [];
-let id = 0;
+  renderBooks() {
+    this.awesomeBooks2.forEach((book) => {
+      this.addBook(book);
+    });
+  }
 
-if (awesomeBooks.length > 0) {
-  id = awesomeBooks[awesomeBooks.length - 1].id;
+  addBook(Book) {
+    Book.id = this.id + 1;
+    this.id += 1;
+
+    this.awesomeBooks.push(Book);
+
+    const singleBook = document.createElement('div');
+    singleBook.classList.add('single-book');
+    singleBook.id = `Book${Book.id}`;
+    books.appendChild(singleBook);
+
+    const titleDiv = document.createElement('div');
+    titleDiv.textContent = `'${Book.title}' by  ${Book.author}`;
+    singleBook.appendChild(titleDiv);
+
+    const buttonDiv = document.createElement('button');
+    buttonDiv.textContent = 'Remove';
+    buttonDiv.id = `button_${Book.id}`;
+    buttonDiv.onclick = () => {
+      this.removeBook(Book.id);
+    };
+    singleBook.appendChild(buttonDiv);
+    this.addToLocalStorage();
+  }
+
+  addToLocalStorage() {
+    localStorage.setItem('awesomeBooks', JSON.stringify(this.awesomeBooks));
+  }
+
+  removeBook(id) {
+    this.awesomeBooks = this.awesomeBooks.filter(
+      (book) => book.id.toString() !== id.toString(),
+    );
+    document.querySelector(`#Book${id}`).remove();
+    this.addToLocalStorage();
+  }
 }
 
-function updateLocalStorage() {
-  localStorage.setItem('awesomeBooks', JSON.stringify(awesomeBooks));
-}
-
-function removeBook(id) {
-  const [a, b] = id.split('_');
-  awesomeBooks = awesomeBooks.filter((book) => book.id.toString() !== b.toString());
-  document.querySelector(`#Book${b}`).remove();
-  updateLocalStorage();
-  return a;
-}
-
-function addBook(title, author) {
-  const newBook = {};
-  id += 1;
-  newBook.id = id;
-  newBook.title = title;
-  newBook.author = author;
-  awesomeBooks.push(newBook);
-
-  const singleBook = document.createElement('div');
-  singleBook.classList.add('single-book');
-  singleBook.id = `Book${id}`;
-  books.appendChild(singleBook);
-
-  const titleDiv = document.createElement('div');
-  titleDiv.textContent = title;
-  singleBook.appendChild(titleDiv);
-
-  const authorDiv = document.createElement('div');
-  authorDiv.textContent = author;
-  singleBook.appendChild(authorDiv);
-
-  const buttonDiv = document.createElement('button');
-  buttonDiv.textContent = 'Remove';
-  buttonDiv.id = `button_${id}`;
-  buttonDiv.onclick = function () {
-    removeBook(buttonDiv.id);
-  };
-  singleBook.appendChild(buttonDiv);
-  updateLocalStorage();
-}
+const myLibrary = new AwesomeBooks();
+myLibrary.renderBooks();
 
 const addButton = document.querySelector('#add-button');
 addButton.addEventListener('click', () => {
-  addBook(
-    document.querySelector('#title').value,
-    document.querySelector('#author').value,
-  );
+  const newBook = new Book(document.querySelector('#title').value, document.querySelector('#author').value);
+  myLibrary.addBook(newBook);
+  document.querySelector('#title').value = '';
+  document.querySelector('#author').value = '';
 });
-
-function renderBooks() {
-  awesomeBooks2.forEach((book) => {
-    addBook(book.title, book.author);
-  });
-}
-renderBooks();

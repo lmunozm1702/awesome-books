@@ -2,19 +2,25 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
   <title>Awesome Books</title>
 </head>
 
 <body>
-  <h1>Awesome Books</h1>
-  <div class="books-content">
+  <div class="app-container">
+    <h1>Awesome Books</h1>
+    <div class="books-content"></div>
+    <div class="ligne"></div>
+    <form>
+      <h3>Add a new book</h3>
+      <input type="text" id="title" placeholder="Title" />
+      <input type="text" id="author" placeholder="Author" />
+      <input type="button" value="Add" id="add-button" />
+    </form>
   </div>
-  <input type="text" id="title" placeholder="Title">
-  <input type="text" id="author" placeholder="Author">
-  <input type="button" value="Add" id="add-button">
 
   <script type="module" src="assets/js/main.js"></script>
 </body>
