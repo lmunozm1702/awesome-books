@@ -18,3 +18,13 @@ awesomeBooks.forEach((book) => {
     removeBook(book.id);
   })
 })
+
+
+/*
+function renderBooks() {
+  awesomeBooks2.forEach((book) => {
+    addBook(book.title, book.author);
+  });
+}
+renderBooks();
+* /
