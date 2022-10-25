@@ -1,14 +1,10 @@
-const books = document.querySelector('.books-content');
+import Book from './books.js';
 
-function deleteBook(id) {
-  const [a, b] = id.split('_');
-  myLibrary.removeBook(b);
-  return a;
-}
+const books = document.querySelector('.books-content');
 class AwesomeBooks {
   constructor(
     awesomeBooks = [],
-    awesoneBooks2 = JSON.parse(localStorage.getItem('awesomeBooks')) || []
+    awesoneBooks2 = JSON.parse(localStorage.getItem('awesomeBooks')) || [],
   ) {
     this.awesomeBooks = awesomeBooks;
     this.awesomeBooks2 = awesoneBooks2;
@@ -52,18 +48,17 @@ class AwesomeBooks {
 
   removeBook(id) {
     this.awesomeBooks = this.awesomeBooks.filter(
-      (book) => book.id.toString() !== id.toString()
+      (book) => book.id.toString() !== id.toString(),
     );
     document.querySelector(`#Book${id}`).remove();
     this.addToLocalStorage();
   }
 }
-class Book {
-  constructor(title, author) {
-    this.title = title;
-    this.author = author;
-    this.id = 0;
-  }
+
+function deleteBook(id) {
+  const [a, b] = id.split('_');
+  myLibrary.removeBook(b);
+  return a;
 }
 
 const myLibrary = new AwesomeBooks();
@@ -76,4 +71,3 @@ addButton.addEventListener('click', () => {
   document.querySelector('#title').value = '';
   document.querySelector('#author').value = '';
 });
-
