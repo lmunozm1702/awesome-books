@@ -1,0 +1,20 @@
+const ids = awesomeBooks.map(object => {
+  return object.id
+})
+const max = Math.max(...ids);
+
+
+
+awesomeBooks.forEach((book) => {
+  books.innerHTML += `
+    < div class="single-book" id = "Book${book.id}" >
+      <div class="title">${book.title}</div>
+      <div class="author">${book.author}</div>
+      <button id="button${book.id}">remove</button>
+    </ >
+    `;
+  const Button = document.querySelector(`#button${book.id} `);
+  Button.addEventListener('click', () => {
+    removeBook(book.id);
+  })
+})
