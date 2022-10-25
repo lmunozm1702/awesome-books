@@ -28,3 +28,9 @@ function renderBooks() {
 }
 renderBooks();
 * /
+
+function deleteBook(id) {
+  const [a, b] = id.split('_');
+  myLibrary.removeBook(b);
+  return a;
+}

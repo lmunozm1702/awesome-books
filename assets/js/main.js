@@ -36,7 +36,9 @@ class AwesomeBooks {
     buttonDiv.textContent = 'Remove';
     buttonDiv.id = `button_${Book.id}`;
     buttonDiv.onclick = function () {
-      deleteBook(buttonDiv.id);
+      const [a, b] = buttonDiv.id.split('_');
+      myLibrary.removeBook(b);
+      return a;
     };
     singleBook.appendChild(buttonDiv);
     this.addToLocalStorage();
@@ -57,12 +59,6 @@ class AwesomeBooks {
 
 const myLibrary = new AwesomeBooks();
 myLibrary.renderBooks();
-
-function deleteBook(id) {
-  const [a, b] = id.split('_');
-  myLibrary.removeBook(b);
-  return a;
-}
 
 const addButton = document.querySelector('#add-button');
 addButton.addEventListener('click', () => {
