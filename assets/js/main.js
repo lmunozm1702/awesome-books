@@ -55,14 +55,14 @@ class AwesomeBooks {
   }
 }
 
+const myLibrary = new AwesomeBooks();
+myLibrary.renderBooks();
+
 function deleteBook(id) {
   const [a, b] = id.split('_');
   myLibrary.removeBook(b);
   return a;
 }
-
-const myLibrary = new AwesomeBooks();
-myLibrary.renderBooks();
 
 const addButton = document.querySelector('#add-button');
 addButton.addEventListener('click', () => {
