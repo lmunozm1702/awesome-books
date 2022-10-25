@@ -7,9 +7,19 @@ function deleteBook(id) {
   return a;
 }
 class AwesomeBooks {
-  constructor(awesomeBooks = []) {
+  constructor(
+    awesomeBooks = [],
+    awesoneBooks2 = JSON.parse(localStorage.getItem("awesomeBooks")) || []
+  ) {
     this.awesomeBooks = awesomeBooks;
+    this.awesomeBooks2 = awesoneBooks2
     this.id = 0;
+  }
+
+  renderBooks(){
+    this.awesomeBooks2.forEach((book) => {
+      this.addBook(book);
+    });
   }
 
   addBook(Book) {
@@ -18,33 +28,41 @@ class AwesomeBooks {
 
     this.awesomeBooks.push(Book);
 
-    const singleBook = document.createElement('div');
-    singleBook.classList.add('single-book');
+    const singleBook = document.createElement("div");
+    singleBook.classList.add("single-book");
     singleBook.id = `Book${Book.id}`;
     books.appendChild(singleBook);
 
-    const titleDiv = document.createElement('div');
-    titleDiv.textContent = Book.title;
+    const titleDiv = document.createElement("div");
+    titleDiv.textContent = `"${Book.title}" by  ${Book.author}`;
     singleBook.appendChild(titleDiv);
 
-    const authorDiv = document.createElement('div');
-    authorDiv.textContent = Book.author;
-    singleBook.appendChild(authorDiv);
+    // const authorDiv = document.createElement("div");
+    // authorDiv.textContent = Book.author;
+    // singleBook.appendChild(authorDiv);
 
-    const buttonDiv = document.createElement('button');
-    buttonDiv.textContent = 'Remove';
+
+    const buttonDiv = document.createElement("button");
+    buttonDiv.textContent = "Remove";
     buttonDiv.id = `button_${Book.id}`;
     buttonDiv.onclick = function () {
       deleteBook(buttonDiv.id);
     };
     singleBook.appendChild(buttonDiv);
-    //updateLocalStorage();
+
+    this.addToLocalStorage();
+  }
+
+  addToLocalStorage() {
+    localStorage.setItem("awesomeBooks", JSON.stringify(this.awesomeBooks));
   }
 
   removeBook(id) {
-    this.awesomeBooks = this.awesomeBooks.filter((book) => book.id.toString() !== id.toString());
+    this.awesomeBooks = this.awesomeBooks.filter(
+      (book) => book.id.toString() !== id.toString()
+    );
     document.querySelector(`#Book${id}`).remove();
-    //updateLocalStorage();
+    this.addToLocalStorage();
   }
 }
 class Book {
@@ -57,63 +75,14 @@ class Book {
 
 const myLibrary = new AwesomeBooks();
 
-/*
-let awesomeBooks = [];
-const awesomeBooks2 = JSON.parse(localStorage.getItem('awesomeBooks')) || [];
-let id = 0;
+myLibrary.renderBooks();
 
-if (awesomeBooks.length > 0) {
-  id = awesomeBooks[awesomeBooks.length - 1].id;
-}
-
-function updateLocalStorage() {
-  localStorage.setItem('awesomeBooks', JSON.stringify(awesomeBooks));
-}
-
-function removeBook(id) {
-  const [a, b] = id.split('_');
-  awesomeBooks = awesomeBooks.filter((book) => book.id.toString() !== b.toString());
-  document.querySelector(`#Book${b}`).remove();
-  updateLocalStorage();
-  return a;
-}
-
-function addBook(title, author) {
-  const newBook = {};
-  id += 1;
-  newBook.id = id;
-  newBook.title = title;
-  newBook.author = author;
-  awesomeBooks.push(newBook);
-
-  const singleBook = document.createElement('div');
-  singleBook.classList.add('single-book');
-  singleBook.id = `Book${id}`;
-  books.appendChild(singleBook);
-
-  const titleDiv = document.createElement('div');
-  titleDiv.textContent = title;
-  singleBook.appendChild(titleDiv);
-
-  const authorDiv = document.createElement('div');
-  authorDiv.textContent = author;
-  singleBook.appendChild(authorDiv);
-
-  const buttonDiv = document.createElement('button');
-  buttonDiv.textContent = 'Remove';
-  buttonDiv.id = `button_${id}`;
-  buttonDiv.onclick = function () {
-    removeBook(buttonDiv.id);
-  };
-  singleBook.appendChild(buttonDiv);
-  updateLocalStorage();
-}
-*/
 
 const addButton = document.querySelector('#add-button');
 addButton.addEventListener('click', () => {
   const newBook = new Book(document.querySelector('#title').value, document.querySelector('#author').value);
   myLibrary.addBook(newBook);
-  console.log(myLibrary);
+  document.querySelector("#title").value = '';
+  document.querySelector("#author").value = '';
 });
 
