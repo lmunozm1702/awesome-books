@@ -35,10 +35,8 @@ class AwesomeBooks {
     const buttonDiv = document.createElement('button');
     buttonDiv.textContent = 'Remove';
     buttonDiv.id = `button_${Book.id}`;
-    buttonDiv.onclick = function () {
-      const [a, b] = buttonDiv.id.split('_');
-      myLibrary.removeBook(b);
-      return a;
+    buttonDiv.onclick = event => {
+      this.removeBook(Book.id);
     };
     singleBook.appendChild(buttonDiv);
     this.addToLocalStorage();
