@@ -69,10 +69,6 @@ form {
   gap: 20px;
 }
 
-.nav-item:hover > a {
-  color: blue;
-}
-
 .nav-item .active {
   color: blue;
 }
@@ -80,6 +76,10 @@ form {
 .nav-item > a {
   text-decoration: none;
   color: black;
+}
+
+.nav-item:hover > a {
+  color: blue;
 }
 
 #contact-div {
