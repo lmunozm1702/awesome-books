@@ -109,9 +109,9 @@ function setCurrentTime() {
 
   const h = n.getHours();
   let mm = n.getMinutes();
-  if (mm < 10) { mm = `0${mm}` };
+  if (mm < 10) { mm = `0${mm}`; }
   let s = n.getSeconds();
-  if (s < 10) { s = `0${s}` };
+  if (s < 10) { s = `0${s}`; }
 
   document.querySelector('#date_time').textContent = `${m} ${d}th ${y}, ${h}:${mm}:${s}`;
 }
