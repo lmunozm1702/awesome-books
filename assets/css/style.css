@@ -1,3 +1,112 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90vh;
+}
+
+#list {
+  text-align: center;
+}
+
+.books-content {
+  border: 2px solid black;
+  margin-top: 10px;
+}
+
+.single-book {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+}
+
+.single-book:nth-child(2n + 1) {
+  background-color: gray;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#add-button {
+  width: fit-content;
+  align-self: flex-end;
+  padding: 4px;
+}
+
+.navBar {
+  width: 100%;
+  height: 100px;
+}
+
+.nav-content {
+  border: 2px solid black;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+}
+
+.nav-list {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-item .active {
+  color: blue;
+}
+
+.nav-item > a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-item:hover > a {
+  color: blue;
+}
+
+#contact-div {
+  margin: 20px 10px;
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.copyright {
+  border: 2px solid black;
+  text-align: start;
+  padding: 10px 20px;
+  margin-top: 20px;
+}
+
+.show-section {
+  display: block;
+}
+
+.hide-section {
+  display: none;
+}
+
+#date_time {
+  text-align: end;
+  margin-top: 5px;
+}

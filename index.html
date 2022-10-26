@@ -2,19 +2,61 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
   <title>Awesome Books</title>
 </head>
 
 <body>
-  <h1>Awesome Books</h1>
-  <div class="books-content">
+  <div class="app-container">
+    <div class="navBar">
+      <div class="nav-content">
+        <div class="nav-logo">Awasome Books</div>
+        <nav>
+          <ul class="nav-list">
+            <li class="nav-item"><a href="#list" id="list-link" class="active">List</a></li>
+            <div>|</div>
+            <li class="nav-item"><a href="#add" id="add-link">Add new</a></li>
+            <div>|</div>
+            <li class="nav-item"><a href="#contact" id="contact-link">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div id="date_time"></div>
+    </div>
+    <div id="list" class="show-section">
+      <h3>All Awesome Books</h3>
+      <div class="books-content"></div>
+    </div>
+
+    <div id="add" class="hide-section">
+      <form>
+        <h3>Add a new book</h3>
+        <input type="text" id="title" placeholder="Title" />
+        <input type="text" id="author" placeholder="Author" />
+        <input type="button" value="Add" id="add-button" />
+      </form>
+    </div>
+    <div id="contact" class="hide-section">
+      <div id="contact-div">
+        <h3 class="contant-title">Contact information</h3>
+
+        <p>
+          Do have any questions or yuo just want to say "Hello"? <br />You can
+          reach out to us!
+        </p>
+
+        <ul>
+          <li>Our email: mail@mail.com</li>
+          <li>Our phone number: 0043586534422</li>
+          <li>Our address: Streetname 22, 84503 City, Country.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">copyright ...</div>
   </div>
-  <input type="text" id="title" placeholder="Title">
-  <input type="text" id="author" placeholder="Author">
-  <input type="button" value="Add" id="add-button">
 
   <script type="module" src="assets/js/main.js"></script>
 </body>
