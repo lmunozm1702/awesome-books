@@ -8,10 +8,14 @@ body {
 }
 
 .app-container {
-  padding:30px; 
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90vh;
 }
 
-#list{
+#list {
   text-align: center;
 }
 
@@ -28,13 +32,6 @@ body {
 
 .single-book:nth-child(2n + 1) {
   background-color: gray;
-}
-
-.ligne {
-  width: 100px;
-  height: 3px;
-  background-color: gray;
-  margin: 20px auto;
 }
 
 form {
@@ -58,7 +55,6 @@ form {
 }
 
 .nav-content {
-  /* width: 100%; */
   border: 2px solid black;
   border-radius: 5px;
   display: flex;
@@ -73,11 +69,11 @@ form {
   gap: 20px;
 }
 
-.nav-item:hover > a{
-  color:blue;
+.nav-item:hover > a {
+  color: blue;
 }
 
-.active{
+.nav-item .active {
   color: blue;
 }
 
@@ -86,7 +82,7 @@ form {
   color: black;
 }
 
-#contact {
+#contact-div {
   margin: 20px 10px;
   text-align: start;
   display: flex;
@@ -95,16 +91,22 @@ form {
   gap: 20px;
 }
 
-.copyright{
-   border: 2px solid black;
-   text-align: start;
-   padding: 10px 20px;
+.copyright {
+  border: 2px solid black;
+  text-align: start;
+  padding: 10px 20px;
+  margin-top: 20px;
 }
 
-.show-section{
+.show-section {
   display: block;
 }
 
-.hide-section{
+.hide-section {
   display: none;
+}
+
+#date_time {
+  text-align: end;
+  margin-top: 5px;
 }

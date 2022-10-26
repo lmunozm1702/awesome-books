@@ -1,42 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Awesome Books</title>
-  </head>
 
-  <body>
-    <div class="app-container">
-      <div class="navBar">
-        <div class="nav-content">
-          <div class="nav-logo">Awasome books</div>
-          <nav>
-            <ul class="nav-list">
-              <li class="nav-item"><a href="#list">List</a></li>
-              <li class="nav-item"><a href="#add">Add new</a></li>
-              <li class="nav-item"><a href="#contact">Contact</a></li>
-            </ul>
-          </nav>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <title>Awesome Books</title>
+</head>
+
+<body>
+  <div class="app-container">
+    <div class="navBar">
+      <div class="nav-content">
+        <div class="nav-logo">Awasome Books</div>
+        <nav>
+          <ul class="nav-list">
+            <li class="nav-item"><a href="#list" id="list-link" class="active">List</a></li>
+            <div>|</div>
+            <li class="nav-item"><a href="#add" id="add-link">Add new</a></li>
+            <div>|</div>
+            <li class="nav-item"><a href="#contact" id="contact-link">Contact</a></li>
+          </ul>
+        </nav>
       </div>
-      <div id="list">
-        <h3>All Awesome Books</h3>
-        <div class="books-content"></div>
+      <div id="date_time"></div>
+    </div>
+    <div id="list" class="show-section">
+      <h3>All Awesome Books</h3>
+      <div class="books-content"></div>
+    </div>
 
-        <div class="ligne"></div>
-      </div>
-
-      <form id="add">
+    <div id="add" class="hide-section">
+      <form>
         <h3>Add a new book</h3>
         <input type="text" id="title" placeholder="Title" />
         <input type="text" id="author" placeholder="Author" />
         <input type="button" value="Add" id="add-button" />
       </form>
-
-      <div id="contact">
+    </div>
+    <div id="contact" class="hide-section">
+      <div id="contact-div">
         <h3 class="contant-title">Contact information</h3>
 
         <p>
@@ -50,9 +54,11 @@
           <li>Our address: Streetname 22, 84503 City, Country.</li>
         </ul>
       </div>
-      <div class="copyright">copyright ...</div>
     </div>
+    <div class="copyright">copyright ...</div>
+  </div>
 
-    <script type="module" src="assets/js/main.js"></script>
-  </body>
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+
 </html>

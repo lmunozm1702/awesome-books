@@ -65,3 +65,59 @@ addButton.addEventListener('click', () => {
   document.querySelector('#title').value = '';
   document.querySelector('#author').value = '';
 });
+
+//Navbar
+const navClickList = document.querySelector('#list-link');
+const navClickAdd = document.querySelector('#add-link');
+const navClickContact = document.querySelector('#contact-link');
+
+const navList = document.querySelector('#list');
+const navAdd = document.querySelector('#add');
+const navContact = document.querySelector('#contact');
+
+navClickList.addEventListener('click', () => {
+  navList.classList = ('show-section');
+  navClickList.classList = ('active');
+  navClickAdd.classList.remove('active');
+  navClickContact.classList.remove('active');
+  navAdd.classList = ('hide-section');
+  navContact.classList = ('hide-section');
+})
+
+navClickAdd.addEventListener('click', () => {
+  navList.classList = ('hide-section');
+  navAdd.classList = ('show-section');
+  navClickAdd.classList = ('active');
+  navClickList.classList.remove('active');
+  navClickContact.classList.remove('active');
+  navContact.classList = ('hide-section');
+})
+
+navClickContact.addEventListener('click', () => {
+  navList.classList = ('hide-section');
+  navAdd.classList = ('hide-section');
+  navContact.classList = ('show-section');
+  navClickContact.classList = ('active');
+  navClickList.classList.remove('active');
+  navClickAdd.classList.remove('active');
+})
+
+//Date and time
+function setCurrentTime() {
+  const n = new Date();
+  const y = n.getFullYear();
+  const m = n.toLocaleString('default', { month: 'long' });
+  const d = n.getDate();
+
+  const h = n.getHours();
+  let mm = n.getMinutes();
+  if (mm < 10) { mm = `0${mm}` }
+  let s = n.getSeconds();
+  if (s < 10) { s = `0${s}` }
+
+  document.querySelector("#date_time").textContent = `${m} ${d}th ${y}, ${h}:${mm}:${s}`;
+}
+
+setInterval(function () {
+  setCurrentTime();
+}, 1000);
